@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Toolbar for the application title -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="ECG Digital Twin Mentor"
+        android:titleTextColor="@android:color/white"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"/>
+
+    <!-- Scrollable content goes inside the ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/toolbar">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- ECG Parameters -->
+            <EditText android:id="@+id/hrInput" android:hint="Heart Rate" android:inputType="numberDecimal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/prInput" android:hint="PR Interval" android:inputType="numberDecimal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/qrsInput" android:hint="QRS Duration" android:inputType="numberDecimal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/stInput" android:hint="ST Segment" android:inputType="numberDecimal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/qtcInput" android:hint="QTc Interval" android:inputType="numberDecimal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/axisInput" android:hint="Electrical Axis" android:inputType="numberDecimal" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <!-- Rhythm Spinner -->
+            <Spinner android:id="@+id/rhythmSpinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <!-- T-Wave Spinner -->
+            <Spinner android:id="@+id/tWaveSpinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <!-- Label for Diagnosis -->
+            <TextView
+                android:id="@+id/diagnosisLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select your diagnosis:"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Spinner for User Diagnosis -->
+            <Spinner
+                android:id="@+id/diagnosisSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button android:id="@+id/generateecgButton" android:text="Generate ECG view" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <!-- Label for ECGView -->
+            <TextView
+                android:id="@+id/ecgviewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ECG View:"
+                android:textSize="16sp"
+                android:layout_marginBottom="0dp" />
+
+            <!-- ECGView -->
+            <es.unex.spilab.ecgvrdtdroid.ECGView
+                android:id="@+id/ecgView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+            <!-- Prediction Result -->
+            <TextView android:id="@+id/resultTextView" android:text="" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="10dp"/>
+
+            <!-- Buttons -->
+            <Button android:id="@+id/predictButton" android:text="Predict" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <Button android:id="@+id/exampleButton" android:text="Load Example" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <Button android:id="@+id/updateButton" android:text="Update Model" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <!-- Label for Model Update URL -->
+            <TextView
+                android:id="@+id/urlUpdateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Server URL to update model:"
+                android:textSize="16sp"
+                android:layout_marginBottom="0dp" />
+
+            <!-- URL for model update -->
+            <EditText android:id="@+id/urlEditText" android:hint="Model update URL" android:inputType="textUri" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="http://192.168.1.100:8000/download-tflite" />
+
+            </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
